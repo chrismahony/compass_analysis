@@ -1,3 +1,5 @@
+#first set up normal seurat object
+
 fibs_only <- subset(amp2_small, idents=levels(amp2_small)[grep("F-", levels(amp2_small))])
 ncol(fibs_only)
 
@@ -5,7 +7,9 @@ fibs_only$cluster_name %>% unique()
 
 fibs_only <- fibs_only %>% ScaleData()
 
-fibs_only_small <- fibs_only[,colnames(fibs_only) %in% sample(colnames(fibs_only), size=ncol(fibs_only)*0.25)]
+#further subseting (optional)
+size=1234
+fibs_only_small <- fibs_only[,colnames(fibs_only) %in% sample(colnames(fibs_only), size=size)]
 
 fibs_only_small <- fibs_only_small %>% ScaleData()
 
