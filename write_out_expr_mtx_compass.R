@@ -16,3 +16,15 @@ fibs_only_small <- fibs_only_small %>% ScaleData()
 mtx_fibs <- GetAssayData(object = fibs_only_small, assay = "RNA", slot = "data")
 
 write.table(mtx_fibs, "/rds/projects/c/croftap-celldive01/amp2/amp2_marta_test/fibs_expression.tsv", sep="\t")
+
+
+#write.out meta.data
+fibs_only_small_meta <- fibs_only_small@meta.data %>% as.data.frame()
+
+fibs_only_small_meta$cell_id <- rownames(fibs_only_small_meta)
+
+write.table(fibs_only_small_meta, "/rds/projects/c/croftap-celldive01/amp2/amp2_marta_test/fibs_compass/fibs_only_small_meta.tsv", sep="\t")
+
+
+
+
